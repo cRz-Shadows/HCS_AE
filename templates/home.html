@@ -1,0 +1,48 @@
+{% block content %}
+    {% for movie in q1 %}
+        <h1>{{ movie.title }}</h1>
+        <img src="{{ movie.poster_url }}" alt="{{ movie.title }} poster">
+    {% endfor %}
+
+    {% if q2 %}
+        {% for movie in q2 %}
+            <h1>{{ movie.title }}</h1>
+            <img src="{{ movie.poster_url }}" alt="{{ movie.title }} poster">
+        {% endfor %}
+    {% endif %}
+
+    {% if q3 %}
+        {% for movie in q3 %}
+            <h1>{{ movie.title }}</h1>
+            <img src="{{ movie.poster_url }}" alt="{{ movie.title }} poster">
+        {% endfor %}
+    {% endif %}
+
+    {% if q4 %}
+        {% for movie in q4 %}
+            <h1>{{ movie.title }}</h1>
+            <img src="{{ movie.poster_url }}" alt="{{ movie.title }} poster">
+        {% endfor %}
+    {% endif %}
+
+    {% if q5 %}
+        {% for movie in q5 %}
+            <h1>{{ movie.title }}</h1>
+            <img src="{{ movie.poster_url }}" alt="{{ movie.title }} poster">
+        {% endfor %}
+    {% endif %}
+{% endblock %}
+
+{% block scripts %}
+  <script>
+    fetch('/{{ movie_title }}/')
+      .then(response => response.json())
+      .then(data => {
+        const titleElement = document.querySelector('h1');
+        const posterElement = document.querySelector('img');
+        titleElement.innerText = data.title;
+        posterElement.src = data.poster_url;
+        posterElement.alt = `${data.title} poster`;
+      });
+  </script>
+{% endblock %}
